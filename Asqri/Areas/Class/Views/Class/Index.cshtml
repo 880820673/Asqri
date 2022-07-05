@@ -1,0 +1,99 @@
+﻿@model Asqri.ViewModels.ClassViewModels
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">نمایش دوره ها</h3>
+    </div>
+    @Html.ActionLink("افزودن دوره", "AddClass", "Class", null, new { @class = "button" })
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.ImageDoreh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.DorehName)
+                </th>
+            
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.TeacherName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.TitrDoreh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.ShoroDoreh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doreh.PayanDoreh)
+                </th>
+               
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Dorehs)
+            {
+                <tr>
+                    <td>
+                        <img src="~/File/UploadImages/@item.ImageDoreh" style="width:80px;height:80px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DorehName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherName)
+                    </td>
+                  
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TitrDoreh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShoroDoreh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayanDoreh)
+                    </td>
+                
+                    <td>
+                        @Html.ActionLink("ویرایش", "EditClass", new { id = item.ID }) |
+                        @Html.ActionLink("حذف", "DeleteClass", new { id = item.ID }, new { onclick = "return confirm('جهت حذف مطمئن هستید ؟')" })
+                    </td>
+                </tr>
+            }
+
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.ImageDoreh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.DorehName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.TeacherName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.TitrDoreh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.ShoroDoreh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doreh.PayanDoreh)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+    <!-- /.box-body -->
+</div>
+

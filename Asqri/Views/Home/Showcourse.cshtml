@@ -1,0 +1,115 @@
+﻿@model Asqri.ViewModels.HomeViewModels
+@{
+    ViewBag.Title = "Showcourse";
+    Layout = "~/Views/Shared/_MasterTeacher.cshtml";
+}
+
+<section id="content">
+    <div id="buddypress">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+
+                    <div id="item-header" role="complementary">
+
+                        <div id="item-header-avatar">
+                            <a href="index.html" title="@Model.Doreh.DorehName"><img width="1073" height="644" src="~/File/UploadImages/@Model.Doreh.ImageDoreh" class="attachment-full size-full wp-post-image" alt=""  /></a>
+                        </div><!-- #item-header-avatar -->
+
+                        <div id="item-header-content">
+                            <span class="highlight"><a href="../../course-cat/language/index.html"></a>, <a href="../../course-cat/business/index.html"></a></span>
+                            <h3>@Html.DisplayFor(m=>m.Doreh.DorehName)</h3>
+
+
+                            <div id="item-meta">
+                                <strong class="course-star-rating">
+                                    <i class="hide"></i><small class="bp_blank_stars"><small style="width:80%;" class="bp_filled_stars"></small></small>
+                                </strong><strong></strong> <div class="students"> </div>
+                                <div itemscope itemtype="http://schema.org/Product">
+                                    <meta itemprop="brand" content="قالب وردپرس آموزش آنلاین WPLMS" />
+                                    <meta itemprop="name" content="آموزش زبان های مختلف" />
+                                    <meta itemprop="description" content="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و &hellip;" />
+                                    <meta itemprop="image" content="../../wp-content/uploads/2014/02/img7.jpg" />
+                                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                                        <meta itemprop="ratingValue" content="4" /> <meta itemprop="reviewCount" content="1" />
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div><!-- #item-header-content -->
+                        <div id="item-admins">
+                            <h3>مدرس</h3>
+                            <div class="instructor_course">
+                               
+                                <h5 class="course_instructor">
+                                    <a href="../../members-2/admin/index.html">@Html.DisplayFor(m=>m.Doreh.TeacherName)<span></span></a>
+                                </h5>
+                            </div>
+                        </div><!-- #item-actions -->
+                    </div><!-- #item-header -->
+
+                @*<div id="item-nav">
+                        <div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+                            <ul>
+                                <li id="home" class="current"><a href="index.html">خانه</a></li>
+                                <li id="members"><a href="members.html">اعضاء</a></li>
+                                <li id="activity"><a href="activity.html">فعالیت</a></li>
+                                <li id="events"><a href="index1187.html?action=events">رویداد ها</a></li>
+                                <li id="drive"><a href="indexe82c.html?action=drive">Drive </a></li>
+                            </ul>
+                        </div>
+                    </div>*@    <!-- #item-nav -->
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div id="item-body">
+
+
+                        <div class="course_title">
+                            	<h1>@Html.DisplayFor(m=>m.Doreh.DorehName)</h1>
+                        </div>
+                        <div class="students_undertaking">
+                           
+                        </div>
+                        <div class="course_description">
+                            <div class="small_desc">
+                                @Html.DisplayFor(m=>m.Doreh.SharhDoreh)
+                            </div>
+
+                        </div>
+                        <div class="course_curriculum accordion">
+                         
+                            <div class="course_curriculum accordion">
+                            
+                            </div>
+                        </div>
+
+             
+                    </div><!-- #item-body -->
+                  
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div class="widget pricing">
+                        <a href="#" class="course_button full button">خرید دوره</a>						<div class="course_details">
+                            <ul><li class="course_price"><strong>قیمت دوره : @Html.DisplayFor(m=>m.Doreh.Price).ToPrice()</strong></li>
+                        <li class="course_time"><i class="icon-clock"></i>شروع دوره : @Html.DisplayFor(m=>m.Doreh.ShoroDoreh)</li><li class="course_badge">
+                                <i class="icon-award-stroke"></i> شروع دوره : @Html.DisplayFor(m => m.Doreh.ShoroDoreh)</li><li class="course_certificate"><i class="icon-certificate-file"></i>  پایان  دوره : @Html.DisplayFor(m => m.Doreh.PayanDoreh)</li></ul>
+                        </div><div class="course_sharing"></div>
+                    </div>
+                    <div id="tag_cloud-2" class="widget widget_tag_cloud">
+                        <h4 class="widget_title"><span>برچسب‌ها</span></h4><div class="tagcloud">
+                            <a href="../../tag/mynews/index.html" class="tag-cloud-link tag-link-45 tag-link-position-1" style="font-size: 18.1818181818pt;" aria-label="اخبار ما (4 مورد)">اخبار ما</a>
+                            <a href="../../tag/theme/index.html" class="tag-cloud-link tag-link-36 tag-link-position-2" style="font-size: 20.2181818182pt;" aria-label="تم (5 مورد)">تم</a>
+                            <a href="../../tag/news/index.html" class="tag-cloud-link tag-link-41 tag-link-position-3" style="font-size: 20.2181818182pt;" aria-label="خبر ها (5 مورد)">خبر ها</a>
+                            <a href="../../tag/learning/index.html" class="tag-cloud-link tag-link-42 tag-link-position-4" style="font-size: 15.6363636364pt;" aria-label="موارد آموزشی (3 مورد)">موارد آموزشی</a>
+                            <a href="../../tag/uncategorized/index.html" class="tag-cloud-link tag-link-35 tag-link-position-5" style="font-size: 22pt;" aria-label="موارد خاص (6 مورد)">موارد خاص</a>
+                            <a href="../../tag/softw/index.html" class="tag-cloud-link tag-link-46 tag-link-position-6" style="font-size: 8pt;" aria-label="نرم افزار (1 مورد)">نرم افزار</a>
+                            <a href="../../tag/wordpress/index.html" class="tag-cloud-link tag-link-37 tag-link-position-7" style="font-size: 12.5818181818pt;" aria-label="وردپرس (2 مورد)">وردپرس</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .padder -->
+
+        </div><!-- #container -->
+    </div>
+</section>	

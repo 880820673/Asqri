@@ -1,0 +1,212 @@
+﻿@model Asqri.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "RegisterStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="Register">
+@using (Html.BeginForm("RegisterStudent", "Student", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Name)
+
+            @Html.TextBoxFor(model => model.Student.Name, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Name)
+           
+
+        </div>
+        <div class="col-lg-6">
+
+            @Html.LabelFor(model => model.Student.Fname)
+
+            @Html.TextBoxFor(model => model.Student.Fname, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Fname)
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Father)
+
+            @Html.TextBoxFor(model => model.Student.Father, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Father)
+
+
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Code)
+
+            @Html.TextBoxFor(model => model.Student.Code, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Code)
+      
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Username)
+
+            @Html.TextBoxFor(model => model.Student.Username, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Username)
+  
+
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Email)
+
+            @Html.TextBoxFor(model => model.Student.Email, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Email)
+   
+
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-lg-6">
+
+            @Html.LabelFor(model => model.User.Password)
+  
+            @Html.PasswordFor(model => model.User.Password, new { style = "width: 100%;" })
+
+
+            @Html.ValidationMessageFor(model => model.User.Password)
+
+        </div>
+        <div class="col-lg-6">
+
+            @Html.LabelFor(model => model.User.ConfirmPassword)
+
+
+            @Html.PasswordFor(model => model.User.ConfirmPassword, new { style = "width: 100%;" })
+
+
+            @Html.ValidationMessageFor(model => model.User.ConfirmPassword)
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Avrge)
+
+            @Html.TextBoxFor(model => model.Student.Avrge, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Avrge)
+   
+
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Mobile)
+
+            @Html.TextBoxFor(model => model.Student.Mobile, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Mobile)
+        
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Magth)
+        
+
+       <select style="width:100%" name="Student.Magth">
+           <option>متوسطه 1</option>
+           <option>متوسطه 2</option>
+           <option>متوسطه 3</option>
+           <option>متوسطه 4</option>
+           <option>متوسطه 5</option>
+           <option>متوسطه 6</option>
+       </select>
+
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.Reshth)
+
+            @Html.TextBoxFor(model => model.Student.Reshth, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Reshth)
+      
+
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-lg-2">
+
+            @Html.LabelFor(model => model.Student.Gender)
+        </div>
+        <div class="col-lg-2">
+            @Html.RadioButton("Student.Gender", "مرد")
+            <span>مرد</span>
+        </div>
+        <div class="col-lg-8">
+            @Html.RadioButton("Student.Gender", "زن")
+            <span>زن</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            @Html.LabelFor(model => model.Student.Adress)
+
+            @Html.TextAreaFor(model => model.Student.Adress, new { style = "width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.Student.Adress)
+            
+
+
+        </div>
+     
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+
+            @Html.LabelFor(model => model.Student.ShenasnameImage)
+
+            @Html.Upload("UploadImage")
+
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Student.NationalImage)
+
+            @Html.Upload("UploadImage2")
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            @Html.LabelFor(model => model.Student.StudentImage)
+            @Html.Upload("UploadImage3")
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+
+            <input type="submit"/>
+
+        </div>
+
+    </div>
+   }
+</div>
+@section scripts{
+    <script src="@Url.Content("~/Scripts/AjaxForm/jquery.form.min.js")"></script>
+
+
+    <script>
+
+        $("#myUploadForm").ajaxForm();
+    </script>
+}

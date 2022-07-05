@@ -1,0 +1,20 @@
+﻿@model Asqri.ViewModels.TeacherViewModel
+@{
+    ViewBag.Title = "AllTeacher";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+@foreach (var item in Model.Teachers)
+{
+    <div class="col-md-4 col-sm-4 clear3">
+        <div class="instructor">
+            <img src="~/File/UploadImages/@item.Image" class="avatar user-1-avatar avatar-460 photo" width="460" height="460" alt="تصویر پروفایل" />									<span></span>
+            <h3><a href="~/Content/User/members-2/admin/index.html">@item.Fname @item.Lname</a></h3>
+            <strong><a href="~/Teacher/DetilsTeacher/@item.Id">@item.Intresting <span>مشاهده مشخصات</span></a></strong>
+        </div>
+    </div>
+} 
+
+
+
+
+

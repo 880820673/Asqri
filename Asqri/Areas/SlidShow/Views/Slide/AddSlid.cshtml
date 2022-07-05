@@ -1,0 +1,80 @@
+﻿@model Asqri.ViewModels.SlidViewModels
+@{
+    ViewBag.Title = "AddSlid";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+@using (Html.BeginForm("AddSlid", "Slide", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">افزودن اسلاید شو</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Slid.Name)
+
+                        @Html.TextBoxFor(model => model.Slid.Name, new { style = "width: 50%;", @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.Slid.Name)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Slid.Description)
+
+                        @Html.TextAreaFor(model => model.Slid.Description, new { style = "width: 100%;", @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.Slid.Description)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Slid.Keywords)
+
+                        <br />
+                        @Html.TextBoxFor(model => model.Slid.Keywords, new { style = "width: 100%;" })
+
+                        @Html.ValidationMessageFor(model => model.Slid.Keywords)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Slid.File)
+
+                        @Html.Upload("UploadImage")
+
+
+                    </div>
+
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">ارسال</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/AjaxForm/jquery.form.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/TagsInput/bootstrap-tagsinput.min.js")"></script>
+
+    <script>
+        $("#Slid_Keywords").keypress(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        }).tagsinput();
+        $("#myUploadForm").ajaxForm();
+    </script>
+}
+

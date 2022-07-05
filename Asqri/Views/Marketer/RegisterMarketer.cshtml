@@ -1,0 +1,150 @@
+﻿@model Asqri.ViewModels.MarketerViewModels
+@{
+    ViewBag.Title = "RegisterMarketer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>ثبت نام بازاریاب</h4>
+@using (Html.BeginForm("RegisterMarketer", "Marketer", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+{
+    @Html.AntiForgeryToken()
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.Marketer.Username)
+
+        @Html.TextBoxFor(model => model.Marketer.Username, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.Marketer.Username)
+    
+
+    </div>
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.Marketer.Fname)
+
+        @Html.TextBoxFor(model => model.Marketer.Fname, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.Marketer.Fname)
+
+
+    </div>
+
+</div>
+
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.Marketer.Lname)
+
+        @Html.TextBoxFor(model => model.Marketer.Lname, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.Marketer.Lname)
+    
+
+    </div>
+    <div class="col-lg-6">
+
+        @Html.LabelFor(model => model.User.Password)
+
+        @Html.PasswordFor(model => model.User.Password, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.User.Username)
+
+    </div>
+</div>
+
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.User.ConfirmPassword)
+
+        @Html.PasswordFor(model => model.User.ConfirmPassword, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.User.ConfirmPassword)
+  
+
+    </div>
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.Marketer.Email)
+
+        @Html.TextBoxFor(model => model.Marketer.Email, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.Marketer.Email)
+
+
+    </div>
+</div>
+
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-6">
+        @Html.LabelFor(model => model.Marketer.Mobile)
+
+        @Html.TextBoxFor(model => model.Marketer.Mobile, new { style = "width: 100%;" })
+
+        @Html.ValidationMessageFor(model => model.Marketer.Mobile)
+
+
+
+    </div>
+    <div class="col-lg-2" style="padding-top:30px">
+
+        @Html.LabelFor(model => model.Marketer.Gender)
+ 
+      
+    
+    </div>
+    <div class="col-lg-2" style="padding-top:30px">
+
+  
+
+        @Html.RadioButton("Marketer.Gender", "مرد")<span style="margin-right:10PX">مرد </span>
+
+    </div>
+    <div class="col-lg-2" style="padding-top:30px">
+
+        @Html.RadioButton("Marketer.Gender", "زن")<span style="margin-right:10PX">زن</span>
+
+    </div>
+</div>
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-12">
+  
+
+      
+
+ 
+
+        <label class="control-label" for="inputEmail">شما در چه زمینه های مایل به همکاری هستید</label>
+        @Html.TextAreaFor(model => model.Marketer.Intresting, new { style = "width: 100%;" })
+
+
+    </div>
+ 
+</div>
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-12">
+
+        @Html.LabelFor(model => model.Marketer.Files)
+
+        @Html.Upload("UploadImage")
+
+
+
+    </div>
+
+</div>
+<div class="row" style="margin-top:20PX">
+    <div class="col-lg-12">
+<input type="submit" value="ثبت"/>
+
+
+
+    </div>
+
+</div>
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/AjaxForm/jquery.form.min.js")"></script>
+
+
+    <script>
+
+        $("#myUploadForm").ajaxForm();
+    </script>
+}

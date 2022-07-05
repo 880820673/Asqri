@@ -1,0 +1,122 @@
+﻿@model Asqri.ViewModels.ClassViewModels
+@{
+    ViewBag.Title = "Groups";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+@using (Html.BeginForm("AddGroup", "Class", FormMethod.Post, new { id = "groupForm", @class= "groupForm1" }))
+{
+    <h1 class="block-header">افزودن گروه</h1>
+            <div class="separator"></div>
+            <div class="block-standart">
+                <div class="form inline">
+                    <div class="group" style="display:inline-block">
+                        @Html.Partial("_GroupList", Model.Groups, new ViewDataDictionary { { "id", "Group_ParentId" }, { "name", "Group.ParentId" } })
+                    </div>
+                    <div class="group" style="display:inline-block;vertical-align:top;padding-right:20px">
+                        <label class="label">نام گروه <span class="required">*</span></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => Model.Group.Name, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => Model.Group.Name)
+                        </div>
+                        <div class="controls" style="margin-top:20px;">
+                            <button class="btn btn-primary" id="btnAdd">افزودن گروه</button>
+                        </div>
+                        <div class="controls" style="margin-top:20px;">
+                            <button class="btn btn-primary"  id="btnEdit">ثبت ویرایش</button>
+                        </div>
+                        <div class="controls" style="margin-top:20px;">
+                            <button class="btn btn-primary" id="btnDelete">&nbsp;&nbsp;حذف گروه&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#Group_ParentId").click(function () {
+                if ($("#Group_ParentId").find(":selected").length > 0) {
+                    var txt = $("#Group_ParentId").find(":selected").text().trim();
+                    $("#Group_Name").val(txt.substring(1))
+                }
+            });
+            $("#btnAdd").click(function (e) {
+                e.preventDefault();
+                //if ($("#groupForm1").valid()) {
+                    $.ajax({
+                        url: "/Class/Class/AddGroup",
+                        data: $("#groupForm").serialize(),
+                        type: "Post",
+                        dataType: "Json",
+                        success: function (result) {
+                            if (result.Success) {
+                                $("#divGroupList").html(result.Html);
+                            }
+                            eval(result.Script);
+                        },
+                        error: function () {
+                            alert("خطا!");
+                        }
+                    });
+                //}
+            });
+            $("#btnDelete").click(function (e) {
+                e.preventDefault();
+                if ($("#Group_ParentId").find(":selected").length > 0) {
+                    $.ajax({
+                        url: "/Class/Class/DeleteGroup",
+                        data: { id: $("#Group_ParentId").find(":selected").val() },
+                        type: "Post",
+                        dataType: "Json",
+                        success: function (result) {
+                            if (result.Success) {
+                                $("#divGroupList").html(result.Html);
+                            }
+                            eval(result.Script);
+                        },
+                        error: function () {
+                            alert("خطا!");
+                        }
+                    });
+                }
+                else {
+                    alert("ابتدا گروه را انتخاب کنید");
+                }
+            });
+            $("#btnEdit").click(function (e) {
+                e.preventDefault();
+                //if ($("#groupForm").valid()) {
+                    if ($("#Group_ParentId").find(":selected").length > 0) {
+                        $.ajax({
+                            url: "/Class/Class/EditGroup",
+                            data: {
+                                Id: $("#Group_ParentId").find(":selected").val(),
+                                Name: $("#Group_Name").val(),
+                                ParentId: $("#Group_ParentId").find(":selected").attr("parentid")
+                            },
+                            type: "Post",
+                            dataType: "Json",
+                            success: function (result) {
+                                if (result.Success) {
+                                    $("#divGroupList").html(result.Html);
+                                }
+                                eval(result.Script);
+                            },
+                            error: function () {
+                                alert("خطا!");
+                            }
+                        });
+                    }
+                    else {
+                        alert("ابتدا گروه را انتخاب کنید");
+                    }
+                //}
+            });
+        });
+    </script>
+}
+}

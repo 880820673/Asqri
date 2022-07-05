@@ -1,0 +1,78 @@
+﻿@model Asqri.ViewModels.HomeViewModels
+@{
+    ViewBag.Title = "ShowAllcourse";
+    Layout = "~/Views/Shared/_MasterTeacher.cshtml";
+}
+
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagetitle">
+                    @*<h1>گرید دوره ها</h1>*@
+                    <h5>بهترین دوره های آموزشی</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="no content">
+                    <div class="vibe_editor clearfix">
+                        <div class="v_module v_column col-md-12 fullwidth v_first">
+                            <style>
+                                .grid.masonry li .block {
+                                    margin-bottom: 30px;
+                                }
+                            </style><div class="v_module vibe_post_grid v_first">
+                                <div id="____________"></div><div class="vibe_grid  inifnite_scroll masonry" data-page=1>
+                                    <div class="wp_query_args" data-max-pages="2">{"first_class":"1","title":"\u062c\u0632\u0626\u06cc\u0627\u062a","show_title":"0","post_type":"course","taxonomy":"","term":"","post_ids":"","course_style":"recent","featured_style":"course","masonry":"1","grid_columns":" grid-item","column_width":"332","gutter":"30","grid_number":"8","infinite":"1","pagination":"0","grid_excerpt_length":"100","grid_link":"1","css_class":"","container_css":"","custom_css":".grid.masonry li .block { margin-bottom:30px;}"}</div>
+                                    <ul class="grid masonry" data-width="332" data-gutter="30" style="position: relative; height: 1206.56px;">
+                                        @foreach (var item in Model.Dorehs)
+                                        {
+                                            <li class="grid-item" style="width: 332px; position: absolute; left: 0px; top: 0px;">
+                                                <div class="block courseitem" data-id="77">
+                                                    <div class="block_media"><a href="/Home/Showcourse/@item.ID"><img width="300" height="180" src="~/File/UploadImages/@item.ImageDoreh" class="attachment-medium size-medium wp-post-image" alt="" srcset="http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-460x276.jpg 460w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-600x360.jpg 600w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-768x461.jpg 768w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-1024x615.jpg 1024w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-120x72.jpg 120w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1-310x186.jpg 310w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2014/02/img1.jpg 1073w" sizes="(max-width: 300px) 100vw, 300px"></a></div><div class="block_content">
+                                                        <h4 class="block_title"><a href="/Home/Showcourse/@item.ID" title="@item.DorehName">@item.DorehName</a></h4><div class="star-rating">
+                                                            <strong class="course-star-rating">
+                                                                <i class="hide">۴</i><small class="bp_blank_stars"><small style="width:80%;" class="bp_filled_stars"></small></small>
+                                                            </strong>
+                                                        </div>
+                                                        <strong>
+                                                            <del>
+                                                                <span class="woocommerce-Price-amount amount">
+                                                                    &nbsp;
+                                                                    <span class="woocommerce-Price-currencySymbol"></span>
+                                                                </span>
+                                                            </del>
+                                                            <ins>
+                                                                <span class="">
+                                                                    @item.Price<span class="woocommerce-Price-currencySymbol">
+                                                                    </span>
+                                                                </span>
+                                                            </ins><span class="subs"> </span>
+                                                        </strong>
+                                                        <span class="clear"></span><div class="instructor_course">
+                                                         
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+
+
+                                    </ul>
+                                </div><div class="load_grid"><span>در حال بارگذاری..</span></div>
+                                <div class="end_grid"><span>دوره دیگری وجود ندارد</span></div>
+                            </div>
+                        </div> <!-- end .v_column_col-md-12 fullwidth -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,85 @@
+﻿@model Asqri.ViewModels.HomeViewModels
+
+@{
+    ViewBag.Title = "ShowNews";
+    Layout = "~/Views/Shared/_MasterTeacher.cshtml";
+}
+
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagetitle">
+
+                    @*<ul class="breadcrumbs"><li><a href="#"><span></span></a></li><li><a href="#"></a></li><li class="current"><span>مقاله 2</span></li></ul>*@
+                    <h1 style="margin-top:50px">@Html.DisplayFor(m => m.news.Title)</h1>
+                    <h5>@Html.DisplayFor(m => m.news.Summary)</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9 col-sm-8 ">
+                <div id="post-44" class="post-44 post type-post status-publish format-standard has-post-thumbnail hentry category-education category-uncategorized">
+                    <div class="content">
+                        <div class="featured">
+                            <img width="768" height="512" src="~/File/UploadImages/@Model.news.Image" class="attachment-44 size-44 wp-post-image" alt="" full="" srcset="http://demo-upweb.ir/new/wplms/wp-content/uploads/2008/08/portfolio20.jpg 768w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2008/08/portfolio20-600x400.jpg 600w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2008/08/portfolio20-460x307.jpg 460w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2008/08/portfolio20-120x80.jpg 120w, http://demo-upweb.ir/new/wplms/wp-content/uploads/2008/08/portfolio20-310x207.jpg 310w" sizes="(max-width: 768px) 100vw, 768px" />
+                        </div>
+                        @Html.DisplayFor(m=>m.news.Description)
+                        <div class="tags">
+                            <div class="indate"><i class="icon-clock"></i> @Html.DisplayFor(m => m.news.times)</div>                                            <div class="social_sharing">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="comments">
+                    <a href="feed/index.html" class="comments_rss"><i class="icon-rss-1"></i></a>
+                    <h3 class="comments-title">0 responses on "مقاله 2"</h3>
+                    <ol class="commentlist"></ol>
+                    <div id="respond" class="comment-respond">
+                        <h3 id="reply-title" class="comment-reply-title"><span>Leave a Message</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">لغو پاسخ</a></small></h3>			<form action="http://demo-upweb.ir/new/wplms/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+                            <p class="comment-notes"><span id="email-notes">نشانی ایمیل شما منتشر نخواهد شد.</span> بخش‌های موردنیاز علامت‌گذاری شده‌اند <span class="required">*</span></p><p><textarea id="comment" name="comment" class="form_field" rows="8" " placeholder="Comment"></textarea></p><p><input class="form_field" id="author" name="author" type="text" value="" placeholder="نام*" /></p>
+                            <p><input id="email" class="form_field" name="email" type="text" value="" placeholder="ایمیل*" /></p>
+                            <p><input id="url" name="url" type="text" class="form_field" value="" placeholder="Website" /></p>
+                            <p class="form-submit">
+                                <input name="submit" type="submit" id="submit" class="submit" value="ارسال دیدگاه" /> <input type='hidden' name='comment_post_ID' value='44' id='comment_post_ID' />
+                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                            </p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e1823803ff" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="203" /></p>
+                        </form>
+                    </div><!-- #respond -->
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="sidebar">
+                    <div id="search-2" class="widget widget_search">
+                        <form role="search" method="get" id="searchform" class="searchform" action="http://demo-upweb.ir/new/wplms/">
+                            <div>
+                                <label class="screen-reader-text" for="s">جستجو برای:</label>
+                                <input type="text" value="" name="s" id="s" />
+                                <input type="submit" id="searchsubmit" value="جستجو" />
+                            </div>
+                        </form>
+                    </div><div id="tag_cloud-2" class="widget widget_tag_cloud">
+                        <h4 class="widget_title"><span>برچسب‌ها</span></h4><div class="tagcloud">
+                            <a href="../tag/mynews/index.html" class="tag-cloud-link tag-link-45 tag-link-position-1" style="font-size: 18.1818181818pt;" aria-label="اخبار ما (4 مورد)">اخبار ما</a>
+                            <a href="../tag/theme/index.html" class="tag-cloud-link tag-link-36 tag-link-position-2" style="font-size: 20.2181818182pt;" aria-label="تم (5 مورد)">تم</a>
+                            <a href="../tag/news/index.html" class="tag-cloud-link tag-link-41 tag-link-position-3" style="font-size: 20.2181818182pt;" aria-label="خبر ها (5 مورد)">خبر ها</a>
+                            <a href="../tag/learning/index.html" class="tag-cloud-link tag-link-42 tag-link-position-4" style="font-size: 15.6363636364pt;" aria-label="موارد آموزشی (3 مورد)">موارد آموزشی</a>
+                            <a href="../tag/uncategorized/index.html" class="tag-cloud-link tag-link-35 tag-link-position-5" style="font-size: 22pt;" aria-label="موارد خاص (6 مورد)">موارد خاص</a>
+                            <a href="../tag/softw/index.html" class="tag-cloud-link tag-link-46 tag-link-position-6" style="font-size: 8pt;" aria-label="نرم افزار (1 مورد)">نرم افزار</a>
+                            <a href="../tag/wordpress/index.html" class="tag-cloud-link tag-link-37 tag-link-position-7" style="font-size: 12.5818181818pt;" aria-label="وردپرس (2 مورد)">وردپرس</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

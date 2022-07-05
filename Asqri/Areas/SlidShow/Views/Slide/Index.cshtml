@@ -1,0 +1,76 @@
+﻿@model Asqri.ViewModels.SlidViewModels
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">نمایش اسلاید شو</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        @Html.ActionLink("افزودن اسلاید شو", "AddSlid", "Slide", null, new { @class = "button" })
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>شماره</th>
+                    <th>تصویر</th>
+                    <th>توضیحات</th>
+                    <th>کلمات کلیدی</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Slids)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td> <img src="~/File/UploadImages/@item.File" style="width:80px;height:80px" /></td>
+                        <td>
+                          @item.Name
+                        </td>
+                        <td>@item.Description
+                        <td>
+
+                      
+                        <td>@Html.ActionLink("ویرایش", "EditSlid", new { id = item.Id }) |
+                        @Html.ActionLink("حذف", "DeleteSlid", new { id = item.Id }, new { onclick = "return confirm('جهت حذف مطمئن هستید ؟')" })</td>
+                    </tr>
+                }
+             
+             
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>شماره</th>
+                    <th>تصویر</th>
+                    <th>توضیحات</th>
+                    <th>کلمات کلیدی</th>
+                    <th>عملیات</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+
+@section scripts{
+<script src="~/Content/Admin/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+}

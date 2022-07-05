@@ -1,0 +1,158 @@
+﻿@model Asqri.ViewModels.TeacherViewModel
+
+@{
+    ViewBag.Title = "Detils";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<p>
+
+    @Html.ActionLink("لیست معلمان", "Index")
+</p>
+<div>
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Teacher.Fname): @Html.DisplayFor(model => model.Teacher.Fname)  </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Teacher.Lname): @Html.DisplayFor(model => model.Teacher.Lname)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Teacher.Username): @Html.DisplayFor(model => model.Teacher.Username)
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Teacher.Email):
+
+                    @Html.DisplayFor(model => model.Teacher.Email)
+
+                <td>
+
+                    @Html.DisplayNameFor(model => model.Teacher.Mobile): @Html.DisplayFor(model => model.Teacher.Mobile)
+
+                <td>
+
+                    @Html.DisplayNameFor(model => model.Teacher.Tlegram): @Html.DisplayFor(model => model.Teacher.Tlegram)
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+
+                    @Html.DisplayNameFor(model => model.Teacher.Intresting)
+
+
+
+                </td>
+                <td>@Html.DisplayFor(model => model.Teacher.Intresting)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    دانلود تصویر معلم
+                </td>
+                <td>
+                    دانلود کارت ملی معلم
+
+                </td>
+                <td>
+                    دانلود تصویر مدرک تحصیلی
+
+                </td>
+                <td>
+                    دانلود روزمه
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span><a class="btn btn-primary" href="~/File/UploadImages/@Model.Teacher.Image">دانلود </a></span>
+                </td>
+                <td>
+                    <span> <a class="btn btn-primary" href="~/File/UploadImages/@Model.Teacher.NationalImage">دانلود </a></span>
+                </td>
+                <td>
+
+                    <a class="btn btn-primary" href="~/File/UploadImages/@Model.Teacher.DegreeImage">دانلود</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="~/File/UploadImages/@Model.Teacher.RozomeImage">دانلود </a>
+                </td>
+            </tr>
+
+
+        </tbody>
+        <tfoot>
+            <tr></tr>
+        </tfoot>
+    </table>
+
+</div>
+<div class="row">
+    <div class="col-lg-1">
+        @using (Html.BeginForm("EditTeachers", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+        {
+            @Html.HiddenFor(model => model.Teacher.Id)
+            @Html.HiddenFor(model => model.Teacher.Fname)
+            @Html.HiddenFor(model => model.Teacher.Lname)
+            @Html.HiddenFor(model => model.Teacher.Username)
+            @Html.HiddenFor(model => model.Teacher.Gender)
+            @Html.HiddenFor(model => model.Teacher.Email)
+            @Html.HiddenFor(model => model.Teacher.Mobile)
+            @Html.HiddenFor(model => model.Teacher.Tlegram)
+            @Html.HiddenFor(model => model.Teacher.Intresting)
+            @Html.HiddenFor(model => model.Teacher.Image)
+            @Html.HiddenFor(model => model.Teacher.NationalImage)
+            @Html.HiddenFor(model => model.Teacher.DegreeImage)
+            @Html.HiddenFor(model => model.Teacher.RozomeImage)
+            <button type="submit" class="btn btn-success">تایید معلم</button>
+        }
+    </div>
+    <div class="col-lg-11">
+
+        @using (Html.BeginForm("falseTeachers", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm2" }))
+        {
+            @Html.HiddenFor(model => model.Teacher.Id)
+            @Html.HiddenFor(model => model.Teacher.Fname)
+            @Html.HiddenFor(model => model.Teacher.Lname)
+            @Html.HiddenFor(model => model.Teacher.Username)
+            @Html.HiddenFor(model => model.Teacher.Gender)
+            @Html.HiddenFor(model => model.Teacher.Email)
+            @Html.HiddenFor(model => model.Teacher.Mobile)
+            @Html.HiddenFor(model => model.Teacher.Tlegram)
+            @Html.HiddenFor(model => model.Teacher.Intresting)
+            @Html.HiddenFor(model => model.Teacher.Image)
+            @Html.HiddenFor(model => model.Teacher.NationalImage)
+            @Html.HiddenFor(model => model.Teacher.DegreeImage)
+            @Html.HiddenFor(model => model.Teacher.RozomeImage)
+            <button type="submit" class="btn btn-danger">تایید نشدن</button>
+        }
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/AjaxForm/jquery.form.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/TagsInput/bootstrap-tagsinput.min.js")"></script>
+
+    <script>
+        $("#Slid_Keywords").keypress(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        }).tagsinput();
+        $("#myUploadForm").ajaxForm();
+        $("#myUploadForm2").ajaxForm();
+    </script>
+}

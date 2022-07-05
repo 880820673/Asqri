@@ -1,0 +1,149 @@
+﻿@model Asqri.ViewModels.ClassViewModels
+
+@{
+    ViewBag.Title = "EditClass";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+@using (Html.BeginForm("EditClass", "Class", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Doreh.ID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.DorehName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Doreh.DorehName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Doreh.DorehName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.GroupId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Partial("_GroupList", @Model.Groups, new ViewDataDictionary { { "id", "Doreh_GroupId" }, { "name", "Doreh.GroupId" } })
+                @Html.ValidationMessageFor(model => model.Doreh.GroupId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.TitrDoreh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Doreh.TitrDoreh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Doreh.TitrDoreh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.SharhDoreh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Doreh.SharhDoreh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Doreh.SharhDoreh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.TeacherName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="Doreh_TeacherName" name="Doreh.TeacherName" class="form-control">
+                    @foreach (var item in Model.Teachers)
+                    {
+                        <option id="@item.Id">@item.Fname  @item.Lname</option>
+                    }
+
+                </select>
+
+                @Html.ValidationMessageFor(model => model.Doreh.TeacherName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.ShoroDoreh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon" data-MdDateTimePicker="true" data-targetselector="#Doreh_ShoroDoreh" data-trigger="click" data-enabletimepicker="true">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                   
+                    @Html.EditorFor(model => model.Doreh.ShoroDoreh, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Doreh.ShoroDoreh, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.PayanDoreh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                <div class="input-group">
+                    <div class="input-group-addon" data-MdDateTimePicker="true" data-targetselector="#Doreh_PayanDoreh" data-trigger="click" data-enabletimepicker="true">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+              
+                    @Html.EditorFor(model => model.Doreh.PayanDoreh, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.ImageDoreh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Upload("UploadImage")
+                @Html.HiddenFor(model => model.Doreh.ImageDoreh)
+                @Html.ImageFor(model => model.Doreh.ImageDoreh, new { width = "80" }, "Tulips.jpg", "File", "UploadImages")
+                @Html.ValidationMessageFor(model => model.Doreh.ImageDoreh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doreh.Enabled, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Doreh.Enabled)
+                    @Html.ValidationMessageFor(model => model.Doreh.Enabled, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts{
+    <script src="@Url.Content("~/Scripts/AjaxForm/jquery.form.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/TagsInput/bootstrap-tagsinput.min.js")"></script>
+
+
+    @Html.CKEditorHeaderScripts()
+
+    <script>
+        $(function () {
+
+            //CKEDITOR.replace('news.Description')
+            $("#Doreh_SharhDoreh").ckeditor();
+
+            $("#news_Keywords").keypress(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+            }).tagsinput();
+        });
+
+        $("#myUploadForm").ajaxForm();
+
+    </script>
+
+
+}

@@ -1,0 +1,97 @@
+﻿@model Asqri.ViewModels.TeacherViewModel
+@{
+    ViewBag.Title = "DetilsTeacher";
+    Layout = "~/Views/Shared/_MasterTeacher.cshtml";
+}
+
+<div id="buddypress">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="pagetitle">
+                    <div id="item-header" role="complementary">
+
+                        <div id="item-header-avatar">
+                            <a href="index.html">
+                                <img src="~/File/UploadImages/@Model.Teacher.Image" class="avatar user-6-avatar avatar-460 photo" width="460" height="460" alt="تصویر پروفایل upweb" />
+                            </a>
+                        </div><!-- #item-header-avatar -->
+                        <div id="item-header-content">
+                            <h3>
+                                <a href="index.html">@Model.Teacher.Fname  @Model.Teacher.Lname</a>
+                            </h3>
+                            <div class="location">
+                            </div>
+                        </div><!-- #item-header-content -->
+
+                    </div><!-- #item-header -->
+                </div>
+                <div id="item-nav" class="">
+                    <div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+                        <ul>
+                            <li id="activity-personal-li"><a id="user-activity" href="#">دوره های برگزار شده </a></li>
+                            <li id="xprofile-personal-li" class="current selected"><a id="user-xprofile" href="profile/index.html">پروفایل</a></li>
+                            <li id="groups-personal-li"><a id="user-groups" href="~/File/UploadImages/@Model.Teacher.RozomeImage">دانلود روزمه </a></li>
+                       
+
+                        </ul>
+                    </div>
+                </div><!-- #item-nav -->
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="padder">
+                    <div id="item-body">
+
+                      <!-- .item-list-tabs -->
+
+                        <div class="profile">
+
+
+
+
+                            <div class="bp-widget %d9%be%d8%a7%db%8c%d9%87">
+                                <h4>اطلاعات مدرس</h4>
+                                <table class="profile-fields">
+
+
+                                    <tr class="field_1 field_%d9%86%d8%a7%d9%85 required-field visibility-public field_type_textbox">
+                                        <td class="name">نام</td>
+                                        <td class="value">
+                                            <p>@Model.Teacher.Fname</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="field_1 field_%d9%86%d8%a7%d9%85 required-field visibility-public field_type_textbox">
+                                        <td class="name">نام خانوادگی</td>
+                                        <td class="value">
+                                            <p>@Model.Teacher.Lname</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="field_1 field_%d9%86%d8%a7%d9%85 required-field visibility-public field_type_textbox">
+                                        <td class="name">@Html.DisplayNameFor(model => model.Teacher.Tlegram)</td>
+                                        <td class="value">
+                                            <p>@Model.Teacher.Tlegram </p>
+                                        </td>
+                                    </tr>
+                                    <tr class="field_1 field_%d9%86%d8%a7%d9%85 required-field visibility-public field_type_textbox">
+                                        <td class="name">@Html.DisplayNameFor(model => model.Teacher.Email)</td>
+                                        <td class="value">
+                                            <p>@Model.Teacher.Email </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+
+
+                        </div><!-- .profile -->
+
+
+                    </div><!-- #item-body -->
+
+                </div><!-- .padder -->
+            </div>
+        </div>
+    </div>
+</div>
+
